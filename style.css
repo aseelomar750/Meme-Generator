@@ -13,7 +13,7 @@ h1 {
     color: #EEEEEE;
 }
 
-.memGeneratorContainer {
+.memeGeneratorContainer {
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -34,7 +34,7 @@ label {
     font-weight: bold;
 }
 
-input[type="text"] {
+input {
     width: 100%;
     padding: 8px;
     margin-top: 5px;
@@ -91,11 +91,11 @@ button:hover {
 }
 
 .top-text {
-    top: 10px; /* Adjust as needed */
+    top: 10px; 
 }
 
 .bottom-text {
-    bottom: 10px; /* Adjust as needed */
+    bottom: 10px; 
 }
 
 .delete-button {
