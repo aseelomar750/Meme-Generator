@@ -8,8 +8,25 @@
   </head>
   <body>
     <h1>Funny Meme Generator</h1>
+
+    <div class="templates-section">
+      <h2>Or Start with a Template:</h2>
+      <div id="memeTemplatesContainer" class="templates-container">
+        <!-- Templates will be loaded here by JS -->
+      </div>
+    </div>
+
     <div class="memeGeneratorContainer">
       <form id="memeForm">
+        <label for="imageUpload">
+          Upload Image (optional):
+          <input
+            type="file"
+            id="imageUpload"
+            name="imageUpload"
+            accept="image/*"
+          />
+        </label>
         <label for="imageURL">
           Image URL:
           <input
@@ -17,7 +34,6 @@
             name="imageURL"
             type="url"
             placeholder="Enter image URL here"
-            required
           />
         </label>
         <label for="topText">
@@ -40,6 +56,55 @@
             required
           />
         </label>
+        <label for="textOutlineToggle" class="outline-label">
+          <input type="checkbox" id="textOutlineToggle" name="textOutlineToggle" checked />
+          Add text outline
+        </label>
+
+        <fieldset class="font-controls">
+          <legend>Top Text Style</legend>
+          <div>
+            <label for="topFontFamily">Font:</label>
+            <select id="topFontFamily" name="topFontFamily">
+              <option value="Inter, sans-serif">Inter</option>
+              <option value="Arial, sans-serif">Arial</option>
+              <option value="Verdana, sans-serif">Verdana</option>
+              <option value="Impact, sans-serif">Impact</option>
+              <option value="Comic Sans MS, cursive">Comic Sans MS</option>
+            </select>
+          </div>
+          <div>
+            <label for="topFontSize">Size (px):</label>
+            <input type="number" id="topFontSize" name="topFontSize" value="30" min="10" max="100">
+          </div>
+          <div>
+            <label for="topFontColor">Color:</label>
+            <input type="color" id="topFontColor" name="topFontColor" value="#FFFFFF">
+          </div>
+        </fieldset>
+
+        <fieldset class="font-controls">
+          <legend>Bottom Text Style</legend>
+          <div>
+            <label for="bottomFontFamily">Font:</label>
+            <select id="bottomFontFamily" name="bottomFontFamily">
+              <option value="Inter, sans-serif">Inter</option>
+              <option value="Arial, sans-serif">Arial</option>
+              <option value="Verdana, sans-serif">Verdana</option>
+              <option value="Impact, sans-serif">Impact</option>
+              <option value="Comic Sans MS, cursive">Comic Sans MS</option>
+            </select>
+          </div>
+          <div>
+            <label for="bottomFontSize">Size (px):</label>
+            <input type="number" id="bottomFontSize" name="bottomFontSize" value="30" min="10" max="100">
+          </div>
+          <div>
+            <label for="bottomFontColor">Color:</label>
+            <input type="color" id="bottomFontColor" name="bottomFontColor" value="#FFFFFF">
+          </div>
+        </fieldset>
+
         <button id="submitBtn" type="submit">Generate MEME</button>
       </form>
     </div>

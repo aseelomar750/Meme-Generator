@@ -98,7 +98,7 @@ button:hover {
 .top-text,
 .bottom-text {
     position: absolute;
-    width: 100%;
+    width: auto; /* Adjust width to content, or set a max-width if preferred */
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
     font-size: 30px;
@@ -106,14 +106,24 @@ button:hover {
     text-align: center;
     padding: 5px 10px;
     box-sizing: border-box;
+    cursor: grab;
+    left: 50%;
+    transform: translateX(-50%);
+    user-select: none; /* Prevent text selection by default on these elements */
 }
 
 .top-text {
-    top: 10px; 
+    top: 10px;
 }
 
 .bottom-text {
-    bottom: 10px; 
+    bottom: 10px;
+    /* top will be set by dragging, so bottom might need to be 'auto' once dragged */
+}
+
+.dragging {
+  cursor: grabbing !important;
+  user-select: none !important; /* Ensure text selection is prevented while dragging */
 }
 
 .delete-button {
@@ -133,4 +143,157 @@ button:hover {
 .delete-button:hover {
     background-color: darkred;
     transform: scale(1.03);
+}
+
+.download-button {
+    position: absolute;
+    top: 10px;
+    right: 75px; /* Positioned to the left of the delete button */
+    background-color: #28a745; /* Green */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: transform 0.2s ease-out, background-color 0.2s ease-out;
+}
+
+.download-button:hover {
+    background-color: #218838; /* Darker green */
+    transform: scale(1.03);
+}
+
+/* Styling for the file input */
+#imageUpload {
+    margin-top: 5px; /* Consistent with other inputs */
+    padding: 8px; /* Basic padding for the surrounding box */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 100%; 
+    box-sizing: border-box; /* Crucial for width and padding */
+    font-family: 'Inter', sans-serif; /* Match other inputs' font */
+    font-size: 14px; /* Match other inputs' font size */
+    /* Note: Direct styling of file input's text field part is limited */
+}
+
+/* Styling for the "Choose File" button part of the file input */
+#imageUpload::file-selector-button {
+    font-family: 'Inter', sans-serif;
+    padding: 8px 12px; /* Padding for the button itself */
+    margin-right: 10px; /* Space between button and "No file chosen" text */
+    border-radius: 4px;
+    border: 1px solid #ddd; /* Consistent border */
+    background-color: #f0f0f0; /* Light grey, distinct from main button */
+    color: #333; /* Darker text for button */
+    cursor: pointer;
+    transition: background-color 0.2s ease-out;
+}
+
+#imageUpload::file-selector-button:hover {
+    background-color: #e0e0e0; /* Slightly darker on hover */
+}
+
+/* Class to remove text outline (text-shadow) */
+.text-no-outline {
+  text-shadow: none !important;
+}
+
+/* Styling for the text outline toggle label */
+.outline-label {
+  display: flex; /* Align checkbox and text nicely */
+  align-items: center;
+  gap: 8px; /* Space between checkbox and label text */
+  font-weight: normal; /* Override default label bolding */
+  margin-top: 5px; /* Space above it */
+  margin-bottom: 10px; /* Space below it */
+}
+
+/* Reset margin for the checkbox itself if needed */
+#textOutlineToggle {
+    margin-top: 0;
+}
+
+/* Ensure meme content container allows for absolute positioning of text */
+.meme-content {
+    position: relative; /* This is crucial for absolute positioning of children */
+    width: 100%; /* Or match image width */
+    height: 100%; /* Or match image height */
+    display: block; /* Ensures it behaves like a block for positioning */
+}
+
+.font-controls {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 15px;
+  margin-bottom: 15px; /* Matches gap in form */
+}
+.font-controls legend {
+  font-weight: bold;
+  padding: 0 5px;
+  margin-left: 5px; /* Align legend text slightly from border */
+}
+.font-controls div {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.font-controls div:last-child { /* Remove margin from last item in fieldset */
+    margin-bottom: 0;
+}
+.font-controls label {
+  font-weight: normal;
+  margin-bottom: 0; /* Override default label margin */
+  flex-basis: 80px; /* Align labels */
+  flex-shrink: 0;
+}
+.font-controls select,
+.font-controls input[type="number"],
+.font-controls input[type="color"] {
+  flex-grow: 1;
+  padding: 8px; /* Consistent padding */
+  border: 1px solid #ccc; /* Slightly different border for inputs within fieldset */
+  border-radius: 4px;
+  box-sizing: border-box; /* Ensure padding doesn't break layout */
+  font-family: 'Inter', sans-serif; /* Ensure font consistency */
+  font-size: 14px; /* Ensure font size consistency */
+}
+.font-controls input[type="color"] {
+  padding: 4px; /* Color inputs often need less padding to show color swatch properly */
+  height: 38px; /* Match other input heights (approx 8px*2 padding + 14px font + 2px border*2) */
+}
+
+.templates-section {
+  width: 100%;
+  max-width: 600px; /* Match memeGeneratorContainer width */
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #fff; /* Similar to generator container */
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+.templates-section h2 {
+  text-align: center;
+  margin-bottom: 15px;
+  color: #333;
+}
+.templates-container {
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping if many templates */
+  gap: 10px;
+  justify-content: center; /* Center templates */
+}
+.templates-container img {
+  width: 100px; /* Adjust size as needed */
+  height: 100px; /* Adjust size as needed */
+  object-fit: cover;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform 0.2s ease-out, border-color 0.2s ease-out;
+}
+.templates-container img:hover {
+  transform: scale(1.05);
+  border-color: #007AFF; /* Primary color */
 }
