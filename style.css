@@ -1,23 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Inter', sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color:#201E43;
+    background-color: #F0F2F5;
+    padding: 20px;
 }
 
 h1 {
     margin-top: 20px;
-    color: #EEEEEE;
+    color: #333333;
+    margin-bottom: 30px;
 }
 
 .memeGeneratorContainer {
-    background-color: #fff;
+    background-color: #FFFFFF;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 30px;
     width: 100%;
     max-width: 600px;
     margin-top: 20px;
@@ -27,6 +31,7 @@ form {
     display: flex;
     flex-direction: column;
     width: 100%;
+    gap: 15px;
 }
 
 label {
@@ -36,25 +41,33 @@ label {
 
 input {
     width: 100%;
-    padding: 8px;
-    margin-top: 5px;
+    padding: 12px;
+    margin-top: 5px; /* Consider removing if gap is sufficient, but let's keep for now */
     border: 1px solid #ddd;
     border-radius: 4px;
+    transition: border-color 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+
+input:focus {
+    border-color: #007AFF;
+    box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.25);
 }
 
 button {
-    margin-top: 20px;
-    padding: 10px 20px;
+    margin-top: 20px; /* Can be adjusted if form gap makes it too large */
+    padding: 12px 20px;
     border: none;
     border-radius: 4px;
-    background-color: #007bff;
-    color: #fff;
+    background-color: #007AFF;
+    color: #FFFFFF;
     font-size: 16px;
     cursor: pointer;
+    transition: transform 0.2s ease-out, background-color 0.2s ease-out;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #0056b3; /* Kept as is, as it's a darker shade of the new blue */
+    transform: scale(1.03);
 }
 
 #memeContainer {
@@ -63,12 +76,17 @@ button:hover {
     justify-content: center;
     width: 100%;
     max-width: 600px;
+    padding-top: 30px;
+    gap: 20px;
 }
 
 .meme {
     position: relative;
     display: inline-block;
-    margin: 20px;
+    margin: 10px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .meme img {
@@ -86,7 +104,7 @@ button:hover {
     font-size: 30px;
     font-weight: bold;
     text-align: center;
-    padding: 0 10px;
+    padding: 5px 10px;
     box-sizing: border-box;
 }
 
@@ -109,8 +127,10 @@ button:hover {
     padding: 5px 10px;
     cursor: pointer;
     font-size: 14px;
+    transition: transform 0.2s ease-out, background-color 0.2s ease-out;
 }
 
 .delete-button:hover {
     background-color: darkred;
+    transform: scale(1.03);
 }
